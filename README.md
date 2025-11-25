@@ -1,15 +1,15 @@
 📘 AI-Based Anomaly Detection on NASA Turbofan Engine Sensor Data (CMAPSS)
 📌 Overview
 
-This project identifies abnormal behavior in real turbofan aircraft engine sensor data using a hybrid machine-learning approach:
+This project identifies abnormal behavior in real turbofan aircraft engine telemetry using a hybrid Machine Learning + Deep Learning approach:
 
 Isolation Forest — unsupervised anomaly detection
 
-Autoencoder Neural Network — reconstruction-based anomaly detection
+Autoencoder Neural Network — reconstruction-based anomaly scoring
 
-The dataset used is NASA CMAPSS FD001, which contains multivariate engine sensor recordings over multiple operational cycles until failure.
+The dataset used is NASA CMAPSS FD001, containing multivariate sensor readings collected across multiple operational cycles until failure.
 
-This methodology is widely used in aviation, defence telemetry, predictive maintenance, and reliability engineering.
+This methodology supports aviation safety, defence telemetry, predictive maintenance, and reliability engineering.
 
 📂 Project Structure
 anomaly_detection/
@@ -18,25 +18,24 @@ anomaly_detection/
 │
 ├── src/
 │   ├── preprocessing.py     # Data loading & normalization
-│   ├── anomaly_detection.py # Model training & anomaly detection pipeline
-│   └── visualize.py         # Plots & visual analysis
+│   ├── anomaly_detection.py # Model training & hybrid anomaly detection
+│   └── visualize.py         # Plotting & result visualization
 │
 ├── results/
-│   ├── anomaly_plot.png     # Visual anomaly representation
-│   └── anomaly_log.txt      # Full anomaly detection output
+│   ├── anomaly_plot.png     # Final anomaly visualization
+│   └── anomaly_log.txt      # Detected anomalies with values
 │
 ├── requirements.txt
 └── README.md
 
 🎯 Dataset Download (Important)
 
-The NASA CMAPSS FD001 dataset is not included due to size and licensing restrictions.
+The NASA CMAPSS dataset is not included due to size and licensing rules.
 
-Download it from:
-
+Download from:
 https://data.nasa.gov/dataset/CMAPSS/
 
-Then place the file inside:
+Then place FD001 file here:
 
 dataset/train_FD001.txt
 
@@ -46,82 +45,90 @@ Python
 
 NumPy, Pandas
 
-Scikit-learn (Isolation Forest)
+Scikit-learn — Isolation Forest
 
-TensorFlow / Keras (Autoencoder)
+TensorFlow / Keras — Autoencoder
 
-Matplotlib (visualization)
+Matplotlib — Visualization
 
 🚀 How It Works
-✅ 1. Load & Preprocess Data
 
-Read CMAPSS FD001 sensor data
+✅ 1. Load & preprocess data
+
+Read CMAPSS FD001 file
 
 Remove empty columns
 
-Normalize all sensor channels
+Normalize all sensor values
 
 Smooth noisy signals
 
 ✅ 2. Train Isolation Forest
+Detects anomalies caused by:
 
-Detects statistical outliers caused by:
-
-sudden sensor spikes
+sensor spikes
 
 unusual operating conditions
 
-abnormal patterns
+abnormal behavior patterns
 
-✅ 3. Train Autoencoder Neural Network
+✅ 3. Train Autoencoder
 
-Learns normal engine behavior and reconstruction patterns.
-Higher reconstruction error → anomaly.
+Learns normal signal structure
 
-✅ 4. Combine Model Decisions
+High reconstruction error → anomaly
 
-Final anomaly = flagged by either model → reduces false negatives.
+✅ 4. Hybrid decision logic
 
-✅ 5. Generate Outputs
+If Isolation Forest OR Autoencoder flags anomaly → mark as anomaly
+
+
+✅ 5. Generate results
 
 visual anomaly plot
 
-anomaly detection log
+anomaly detection log file
 
 ▶️ Running the Project
+
+Install dependencies:
+
 pip install -r requirements.txt
+
+
+Run detection:
+
 python src/anomaly_detection.py
 
 📈 Sample Output
 
-Below is a visualization showing detected anomalies (red points)
-among normal engine sensor readings:
+Detected anomalies (red) among normal sensor readings:
 
 🎯 Why This Project Matters (DRDO Relevance)
 
-Uses real aviation-grade sensor telemetry
+Uses aviation-grade sensor telemetry
 
-Demonstrates predictive maintenance capabilities
+Demonstrates predictive maintenance
 
-Shows hybrid ML + DL anomaly detection approach
+Implements hybrid ML + DL fault detection
 
-Applicable to aircraft, UAVs, missile engines & ground test systems
+Applicable to aircraft engines, UAV propulsion, missile systems
 
-Reflects real research workflows used in defence labs
+Reflects real analytical workflows used in defence labs
 
 📚 Future Enhancements
 
 LSTM / GRU sequence-based anomaly detection
 
-Sensor correlation analysis for root cause detection
+Sensor correlation & root-cause analysis
 
-Real-time streaming anomaly detection pipeline
+Real-time streaming anomaly monitoring
 
-Model explainability (SHAP / feature attribution)
+Explainability using SHAP / feature attribution
 
 📜 License
 
-This project is open-source under the MIT License.
+MIT License — free to use and modify.
 
 👤 Author
 
