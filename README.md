@@ -1,15 +1,16 @@
 📘 AI-Based Anomaly Detection on NASA Turbofan Engine Sensor Data (CMAPSS)
+
 📌 Overview
 
-This project identifies abnormal behavior in real turbofan aircraft engine telemetry using a hybrid Machine Learning + Deep Learning approach:
+This project identifies abnormal behavior in real turbofan aircraft engine telemetry using a hybrid ML + DL pipeline:
 
 Isolation Forest — unsupervised anomaly detection
 
-Autoencoder Neural Network — reconstruction-based anomaly scoring
+Autoencoder Neural Network — reconstruction-based anomaly detection
 
-The dataset used is NASA CMAPSS FD001, containing multivariate sensor readings collected across multiple operational cycles until failure.
+Dataset: NASA CMAPSS FD001, containing multivariate engine sensor recordings across operational cycles.
 
-This methodology supports aviation safety, defence telemetry, predictive maintenance, and reliability engineering.
+Used in aviation, defence telemetry, predictive maintenance, reliability engineering.
 
 📂 Project Structure
 anomaly_detection/
@@ -18,24 +19,24 @@ anomaly_detection/
 │
 ├── src/
 │   ├── preprocessing.py     # Data loading & normalization
-│   ├── anomaly_detection.py # Model training & hybrid anomaly detection
-│   └── visualize.py         # Plotting & result visualization
+│   ├── anomaly_detection.py # ML/DL anomaly detection pipeline
+│   └── visualize.py         # Plots & analysis
 │
 ├── results/
-│   ├── anomaly_plot.png     # Final anomaly visualization
-│   └── anomaly_log.txt      # Detected anomalies with values
+│   ├── anomaly_plot.png     # Final visualization
+│   └── anomaly_log.txt      # Detected anomaly records
 │
 ├── requirements.txt
 └── README.md
 
-🎯 Dataset Download (Important)
+🎯 Dataset Download (Required)
 
-The NASA CMAPSS dataset is not included due to size and licensing rules.
+Dataset not included due to licensing and size limits.
 
 Download from:
 https://data.nasa.gov/dataset/CMAPSS/
 
-Then place FD001 file here:
+Place FD001 file inside:
 
 dataset/train_FD001.txt
 
@@ -45,80 +46,55 @@ Python
 
 NumPy, Pandas
 
-Scikit-learn — Isolation Forest
+Scikit-learn (Isolation Forest)
 
-TensorFlow / Keras — Autoencoder
+TensorFlow / Keras (Autoencoder)
 
-Matplotlib — Visualization
+Matplotlib
 
 🚀 How It Works
-
 ✅ 1. Load & preprocess data
 
-Read CMAPSS FD001 file
-
-Remove empty columns
-
-Normalize all sensor values
-
-Smooth noisy signals
+normalize, clean, smooth sensor values
 
 ✅ 2. Train Isolation Forest
-Detects anomalies caused by:
 
-sensor spikes
-
-unusual operating conditions
-
-abnormal behavior patterns
+detects statistical outliers/spikes
 
 ✅ 3. Train Autoencoder
 
-Learns normal signal structure
+learns normal behavior → high error = anomaly
 
-High reconstruction error → anomaly
+✅ 4. Hybrid decision rule
+If Isolation Forest OR Autoencoder flags anomaly → anomaly
 
-✅ 4. Hybrid decision logic
+✅ 5. Output generated
 
-If Isolation Forest OR Autoencoder flags anomaly → mark as anomaly
+anomaly plot
 
+anomaly log file
 
-✅ 5. Generate results
-
-visual anomaly plot
-
-anomaly detection log file
-
-▶️ Running the Project
-
-Install dependencies:
-
+▶️ Run the Project
 pip install -r requirements.txt
-
-
-Run detection:
-
 python src/anomaly_detection.py
 
 📈 Sample Output
 
-Detected anomalies (red) among normal sensor readings:
-
 🎯 Why This Project Matters (DRDO Relevance)
 
-Uses aviation-grade sensor telemetry
+Uses real aviation-grade sensor telemetry
 
-Demonstrates predictive maintenance
+Demonstrates predictive maintenance capability
 
 Implements hybrid ML + DL fault detection
 
 Applicable to aircraft engines, UAV propulsion, missile systems
 
-Reflects real analytical workflows used in defence labs
+Reflects analytical workflows used in defence research labs
 
 📚 Future Enhancements
 
-LSTM / GRU sequence-based anomaly detection
+LSTM/GRU sequence-based anomaly detection
 
 Sensor correlation & root-cause analysis
 
