@@ -93,6 +93,8 @@ Plot showing detected anomalies (red) vs normal readings
 
 Log file listing anomaly points with timestamps
 
+![Anomaly Detection Plot](results/anomaly_plot.png)
+
 
 ## 🎯 Why This Project is Relevant to DRDO
 
