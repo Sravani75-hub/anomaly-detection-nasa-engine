@@ -11,11 +11,8 @@ This project detects abnormal behavior in real turbofan aircraft engine telemetr
 The dataset used is **NASA CMAPSS FD001**, containing turbofan engine sensor readings collected across multiple operational cycles until failure.
 
 This methodology supports aviation safety, defence telemetry, fault diagnosis, and predictive maintenance.
-
----
-
 ## 📂 Project Structure
-
+```
 anomaly_detection/
 │
 ├── dataset/
@@ -32,10 +29,7 @@ anomaly_detection/
 │
 ├── requirements.txt
 └── README.md
-
-
----
-
+```
 ## 🛠️ Technologies Used
 
 - Python  
